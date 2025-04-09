@@ -1,5 +1,5 @@
 # Siemens LOGO PLC controller Python interface
-# Using unofficial AJAX API calls to LOGO Web Interface
+# Using unofficial API calls to LOGO Web Interface
 # Adapted to Python from https://github.com/jankeymeulen/siemens-logo-rest
 
 import re
@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 
 class LOGO:
     """
-    A class to interface with the Siemens LOGO PLC controller using its unofficial AJAX API.
+    A class to interface with the Siemens LOGO PLC controller using its unofficial API.
 
     This class allows for the retrieval and setting of variables on the LOGO PLC.
     It handles the authentication process and manages the communication with the LOGO Web Interface.
@@ -113,7 +113,7 @@ class LOGO:
         Sets the value of a specified variable on the LOGO PLC.
 
         :param variable: str
-            The variable to set, formatted as 'TypeAddress' (e.g., 'VM0', 'I1').
+            The variable to set, formatted as 'TypeAddress' (e.g., 'VM0', 'Q1').
 
         :param value: str
             The value to assign to the specified variable.
@@ -130,12 +130,12 @@ class LOGO:
 
 if __name__ == "__main__":
     # Example usage of LOGO class
-    logo = LOGO('192.168.1.103')  # Initialize the LOGO connection with the specified IP address
+    logo = LOGO('192.168.1.10')  # Initialize the LOGO connection with the specified IP address
 
-    # Example command to set a variable (uncomment to use)
-    # logo.setVariable("VM0", 1)  # Start 'run' by setting VM0 to 1
+    # # Example command to set a variable
+    # logo.setVariable("Q0", 1)  # Set output 0 to high
 
-    # Example command to get a variable value (uncomment to use)
+    # # Example command to get a variable value
     # value = logo.getVariable("VM0")
     # print(f'The value of VM0 is: {value}')
 

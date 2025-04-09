@@ -1,5 +1,5 @@
-# Siemens-LOGO-Python-REST-API
-Small Python wrapper for communicating with the Siemens LOGO line of PL Controllers. The wrapper exposes the unofficial REST API that is normally used through the LOGO Web Interface.
+# Siemens LOGO Python Client
+Small Python wrapper for communicating with the Siemens LOGO line of PL Controllers. The wrapper exposes the unofficial API that is normally used through the LOGO Web Interface.
 It is possible to get (read) and set (change) the Variables, Inputs, Outputs and special memory addresses. Connection to the Siemens LOGO PLC happens over IP / Ethernet.
 
 Uses and adapts the excellent research, documentation and example code from [Jankeymeulens' Siemens LOGO Rest repository](https://github.com/jankeymeulen/siemens-logo-rest).
@@ -9,7 +9,7 @@ Uses and adapts the excellent research, documentation and example code from [Jan
 2. Install dependencies (optionally in a virtual environment) using `pip install -r requirements.txt`
 
 - The WebUser of the LOGO Web Interface needs to have a password set. This can be configured through the Siemens Soft Comfort LOGO programming software.
-- The unofficial REST API is tested for (Analog) Inputs, (Analog) Outputs, Motor In/Outputs and Variable Memory types. Other functions might be supported but remain untested.
+- The unofficial API is tested for (Analog) Inputs, (Analog) Outputs, Motor In/Outputs and Variable Memory types on a Siemens LOGO! 8.3 PLC. Other functions might be supported but remain untested.
 - Outputs can only be set while a program is running on the Siemens LOGO PLC.
 - If a program needs to be started from the Python script, a Network Input can be added to the LOGO program (e.g. VariableMemory address 0) which can be used to Enable the program. By running `setVariable("VM0", '1')`, the program can be started and by running `setVariable("VM0", '0')` the program can be 'stopped'. There is no direct implementation to RUN and STOP the program fully.
 
@@ -34,7 +34,7 @@ _Returns_ (str): The value of the specified variable, or None if the variable ty
 
 Sets the value of a specified variable on the LOGO PLC.
 
-_variable_ (str): The variable to retrieve, formatted as 'TypeAddress' (e.g., 'VM0', 'I1').
+_variable_ (str): The variable to retrieve, formatted as 'TypeAddress' (e.g., 'VM0', 'Q1').
 
 _value_ (str): The value to assign to the specified variable.
 
@@ -59,7 +59,7 @@ The following variable types are supported:
 logo = LOGO('192.168.1.10')
 
 # Set a variable
-logo.setVariable("VM0", "1")
+logo.setVariable("Q1", "1")
 
 # Get a variable value
 value = logo.getVariable("VM0")
